@@ -10,6 +10,8 @@
   <!-- joystick_type, 1: XBOX360_WIRED, 2: XBOX360_WIRELESS, 3: SPACEMOUSE_WIRELESS, 99: KEYBOARD -->
   <arg name="joystick_type" default="1" />
   <arg name="model1300" default="false" />
+  <arg name="gripper_port" default="/dev/ttyUSB0" />
+  <arg name="gripper_baudrate" default="57600" />
 
   <!-- lite6 -->
   <include if="$(eval robot_type == 'lite')" file="$(eval find(str(arg('robot_type')) + str(arg('dof')) + '_moveit_config') + '/launch/realMove_exec.launch')">
@@ -55,6 +57,8 @@
     <param name="dof" type="int" value="$(arg dof)" />
     <param name="ros_queue_size" type="int" value="1" />
     <param name="joystick_type" type="int" value="$(arg joystick_type)" />
+    <param name="gripper_port" type="string" value="$(arg gripper_port)" />
+    <param name="gripper_baudrate" type="int" value="$(arg gripper_baudrate)" />
   </node>
 
   <!-- keyboard -->
